@@ -1,0 +1,16 @@
+# Exiftool
+# Write Metadata into JPG file from JSON
+# Remember to change the source fle directory at the end
+exiftool --ext json -r -tagsfromfile "%d/%F.json" "-GPSAltitude<GeoDataAltitude" "-GPSLatitude<GeoDataLatitude" "-GPSLatitudeRef<GeoDataLatitude" "-GPSLongitude<GeoDataLongitude" "-GPSLongitudeRef<GeoDataLongitude" -Description -d %s "-Alldates<PhotoTakenTimeTimestamp" -overwrite_original '/mnt/hgfs/GPhotos/Separated_Folder/heic_converted_jpg_folder'
+
+
+# Add/Subtract hours from all jpg files metadata in a folder
+exiftool -AllDates+=8 C:\GPhoto\Separated_Folder\heic_converted_jpg_folder\*.JPG
+
+
+
+
+
+# Convert HEIC Files to JPG (Unix only - Mac/Ubuntu)
+# Install magick via brew first
+magick mogrify -monitor -format jpg *.HEIC
